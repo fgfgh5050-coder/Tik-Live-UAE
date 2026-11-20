@@ -1,3 +1,4 @@
+
 name: Build Tik Live UAE
 
 on:
@@ -19,8 +20,11 @@ jobs:
         with:
           channel: stable
 
-      - name: Generate platform folders
-        run: flutter create --platforms=android,ios,windows .
+      - name: Generate Android project files
+        run: flutter create --platforms=android --org com.tikliveuae .
+
+      - name: Clean previous build files
+        run: flutter clean
 
       - name: Install dependencies
         run: flutter pub get
@@ -33,4 +37,3 @@ jobs:
         with:
           name: Tik-Live-UAE-Android
           path: build/app/outputs/flutter-apk/app-release.apk
-          
